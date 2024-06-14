@@ -1,4 +1,6 @@
 # AlexMoulinNeuf
-yarn 
+yarn /
 yarn dev
-in fetch data enter on OpenAo object the key who i send to you in teams 
+
+## Description
+Ajouter les clé que j'ai envoyer par message dans le .env et tcheck l'objet OpenApi dans fetch data
