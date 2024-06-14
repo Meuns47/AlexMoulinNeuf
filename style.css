@@ -1,0 +1,120 @@
+/* style.css */
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  height: 100vh;  /* Assure que le corps prend toute la hauteur de la fenêtre */
+  justify-content: center;  /* Centre verticalement le contenu */
+}
+
+.chat-container {
+  width: 800px;  /* Définir une largeur stable pour le conteneur de chat */
+  height: 70vh;  /* Définit une hauteur pour le conteneur de chat */
+  margin: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-historique {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.message.user {
+  background-color: #e0f7fa;
+  align-self: flex-end;
+}
+
+.message.bot {
+  background-color: #ffecb3;
+  align-self: flex-start;
+}
+
+.message-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bot-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;  /* Ajuste l'image pour qu'elle s'adapte bien au conteneur */
+}
+
+.timestamp {
+  font-size: 0.75em;
+  color: #888;
+  margin-top: 5px;  /* Ajoute un espacement entre le texte du message et l'heure */
+  align-self: flex-end;
+}
+
+.input-container {
+  display: flex;
+  padding: 10px;
+  background-color: #f1f1f1;
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.bot-selection {
+  display: flex;
+  justify-content: space-around;
+  width: 800px;  /* Définir une largeur stable pour les bulles */
+  margin: 20px 0;
+}
+
+.bot-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.bot-option img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 2px solid transparent;
+}
+
+.bot-option p {
+  margin: 0;
+}
+
+.bot-option:hover {
+  transform: scale(1.1);
+}
+
+.bot-option.selected img {
+  border-color: red;
+}
