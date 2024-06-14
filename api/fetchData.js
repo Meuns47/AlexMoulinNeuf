@@ -164,11 +164,13 @@ const handleSpecialCommand = async (command, bots, bot = null) => {
 export const setupChatForm = (bots) => {
   const chatForm = document.getElementById('chat-form');
   const messageInput = document.getElementById('message-input');
+  const sendButton = document.getElementById('send-button');
+  const cleanButton = document.getElementById('clean-button');
   const botOptions = document.querySelectorAll('.bot-option');
 
   let activeBot = null;
 
-  if (!chatForm || !messageInput || !botOptions) {
+  if (!chatForm || !messageInput || !botOptions || !sendButton || !cleanButton) {
     console.error('Chat form or bot options elements are not found');
     return;
   }
@@ -188,7 +190,7 @@ export const setupChatForm = (bots) => {
   });
 
   const sendMessage = async (event) => {
-    if (event.key !== 'Enter') return; // Only proceed if Enter key is pressed
+    if (event.type === 'keydown' && event.key !== 'Enter') return; // Only proceed if Enter key is pressed
     event.preventDefault();
 
     const userMessage = messageInput.value.trim();
@@ -268,6 +270,17 @@ export const setupChatForm = (bots) => {
       addMessageToHistorique("An error occurred while processing your request.", "bot");
     }
   };
+
+  chatForm.addEventListener('submit', sendMessage);
+  sendButton.addEventListener('click', sendMessage);
+
+  cleanButton.addEventListener('click', () => {
+    localStorage.removeItem('chatMessages');
+    const messageHistorique = document.getElementById('message-historique');
+    while (messageHistorique.firstChild) {
+      messageHistorique.removeChild(messageHistorique.firstChild);
+    }
+  });
 
   messageInput.addEventListener('keydown', sendMessage);
 };

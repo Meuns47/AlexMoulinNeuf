@@ -7,13 +7,13 @@ body {
   align-items: center;
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
-  height: 100vh;  /* Assure que le corps prend toute la hauteur de la fenêtre */
-  justify-content: center;  /* Centre verticalement le contenu */
+  height: 100vh;
+  justify-content: center;
 }
 
 .chat-container {
-  width: 800px;  /* Définir une largeur stable pour le conteneur de chat */
-  height: 70vh;  /* Définit une hauteur pour le conteneur de chat */
+  width: 800px;
+  height: 70vh;
   margin: 20px;
   background-color: #fff;
   border-radius: 10px;
@@ -36,41 +36,58 @@ body {
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
+  position: relative;
+  max-width: 70%;
 }
 
 .message.user {
-  background-color: #e0f7fa;
+  background-color: #ffecb3;
   align-self: flex-end;
+  justify-content: flex-end;
+  margin-left: auto;
+  flex-direction: row-reverse;
+}
+
+.message.user .message-content {
+  text-align: right;
 }
 
 .message.bot {
-  background-color: #ffecb3;
+  background-color: #e0f7fa;
   align-self: flex-start;
 }
 
 .message-content {
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  word-wrap: break-word;
 }
 
 .bot-image {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-right: 10px;
-  object-fit: cover;  /* Ajuste l'image pour qu'elle s'adapte bien au conteneur */
+  margin-left: 10px;
 }
 
 .timestamp {
   font-size: 0.75em;
   color: #888;
-  margin-top: 5px;  /* Ajoute un espacement entre le texte du message et l'heure */
-  align-self: flex-end;
+  position: absolute;
+  bottom: 5px;
+}
+
+.message.user .timestamp {
+  left: 10px;
+  right: auto;
+}
+
+.message.bot .timestamp {
+  right: 10px;
 }
 
 .input-container {
   display: flex;
+  align-items: center;
   padding: 10px;
   background-color: #f1f1f1;
 }
@@ -86,7 +103,7 @@ input[type="text"] {
 .bot-selection {
   display: flex;
   justify-content: space-around;
-  width: 800px;  /* Définir une largeur stable pour les bulles */
+  width: 800px;
   margin: 20px 0;
 }
 
@@ -117,4 +134,29 @@ input[type="text"] {
 
 .bot-option.selected img {
   border-color: red;
+}
+
+#send-button, #clean-button {
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+#send-button {
+  background-color: #28a745;
+}
+
+#clean-button {
+  background-color: #dc3545;
+}
+
+#send-button i, #clean-button i {
+  font-size: 1.5em;
 }
